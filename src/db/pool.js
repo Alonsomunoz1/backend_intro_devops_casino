@@ -1,7 +1,12 @@
 // ============================================================
 // pool.js - Pool de conexiones a Postgres
 // ============================================================
-const { Pool } = require('pg');
+const { Pool, types } = require('pg');
+
+// Postgres devuelve NUMERIC como string por defecto (precision-safe).
+// Para nuestro caso (saldo, montos en dos decimales) es seguro
+// convertir a Number para que la API responda numeros JSON.
+types.setTypeParser(1700, (v) => v === null ? null : parseFloat(v));
 
 const pool = new Pool({
   host:     process.env.DB_HOST     || 'localhost',

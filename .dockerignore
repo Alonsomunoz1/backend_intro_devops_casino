@@ -3,5 +3,12 @@ npm-debug.log
 .env
 .git
 .gitignore
+.github
+.vscode
+.DS_Store
 README.md
+Dockerfile
+db
 docs
+*.log
+coverage

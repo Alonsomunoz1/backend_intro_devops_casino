@@ -142,8 +142,10 @@ El docente espera que ustedes:
    - `depends_on` con `condition: service_healthy` y un `healthcheck`
      en `db` (`pg_isready`).
    - Variables de entorno **inyectadas por compose**, sin hard-codear.
-3. Configuren un workflow en `.github/workflows/deploy.yml` activado
-   por `push` a la rama `deploy` que haga `build → push → deploy` en EC2.
+3. Configuren workflows en `.github/workflows/` que hagan
+   `build → push (ECR) → deploy` en EC2 al hacer push a la rama
+   correspondiente (en el **Ejercicio 2.5** se usa `main`; en la
+   **EP2** la pauta oficial pide la rama `deploy`).
 
 Lean la pauta oficial (`EP2_Instrucciones y Pauta_Encargo_Estudiante.pdf`)
 para los criterios completos.
