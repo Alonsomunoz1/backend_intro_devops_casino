@@ -1,9 +1,8 @@
 node_modules
-package-lock.json
+npm-debug.log
 .env
-*.log
-coverage
-
-# Claude Code
-.claude/
-CLAUDE.md
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+.idea
