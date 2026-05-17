@@ -30,7 +30,7 @@ jobs:
           host: ${{ secrets.AWS_BACKEND_IP }}
           username: ec2-user
           key: ${{ secrets.AWS_SSH_KEY }}
-          script: |
+          script: 
             sudo dnf install -y docker
             sudo systemctl start docker
             sudo usermod -aG docker ec2-user
