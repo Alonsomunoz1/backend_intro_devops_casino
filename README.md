@@ -60,3 +60,20 @@ middleware de autenticación:
 npm ci
 npm test
 ```
+
+## Qué debes hacer en este repo (Entrega ET)
+Trabaja en tu **fork**, con ramas `dev` (trabajo) y `deploy` (gatilla el pipeline).
+
+1. **Integrar las pruebas al pipeline (obligatorio):** este repo **ya trae pruebas**
+   (`npm ci && npm test`). Agrégalas como etapa que **bloquea el deploy** si fallan:
+   build → **test** → push a ECR → deploy a EKS.
+2. **Dockerfile** del backend (escucha en el puerto **3000**).
+3. **Manifiestos de Kubernetes**: `Deployment` + `Service` **ClusterIP**, con
+   `livenessProbe`/`readinessProbe` apuntando a `/livez` y `/readyz` (ya
+   implementadas) y la config/secretos desde el Secret compartido `casino-secrets`.
+4. **Workflow CI/CD** (`.github/workflows/`) gatillado por `deploy`, con la etapa
+   de *test*. Credenciales por **GitHub Secrets**.
+5. **HPA** (autoescalado por CPU) y autorecuperación de pods.
+
+> El backend es **interno** (ClusterIP): nunca se expone a Internet.
+> Transversal (clúster, una sola vez): **Prometheus + Grafana** y el **video**.
